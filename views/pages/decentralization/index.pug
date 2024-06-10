@@ -1,0 +1,29 @@
+extends ../../layouts/admin.pug
+
+block main
+    .decentralization.mt-4
+        .container
+            .row
+                .col-12
+                    h3.text-center.fw-bold.fs-1.pt-4.pb-5 Roles
+                    p.text-dark.fs-3.pb-5 Total number of accounts is #{countDocuments}
+                    table.table.text-center
+                        thead
+                            tr.fs-4.fw-bold
+                                td.text-white(style="background: #004D60;" scope="col") #
+                                td.text-white(style="background: #004D60;" scope="col") Email
+                                td.text-white(style="background: #004D60;" scope="col") Role
+                                td.text-white(style="background: #004D60;" scope="col") Actions
+                        tbody
+                            each user, index in users
+                                tr.fs-4
+                                    td= index + 1
+                                    td= user.email
+                                    td.fw-bold= user.role
+                                    td
+                                        if user.role === "user"
+                                            button(style="min-width: 80px").btn.btn-danger.fs-4.fw-bold(class="btn-role" type="submit" value="admin" user-data=user.id) User
+                                        else
+                                            button(style="min-width: 80px").btn.btn-primary.fs-4.fw-bold(class="btn-role" type="submit" value="user" user-data=user.id) Admin
+
+            form(action="" data-path="/admin/decentralization/" method="POST" id="form-decentralization")

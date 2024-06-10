@@ -1,0 +1,58 @@
+extends ../../layouts/default.pug
+
+block main
+    .products
+      .container
+        .row.row-custom
+          h2.product-title Find Your Products
+          .col-xl-6.col-md-6.col-sm-12.col-12
+            form#search-box
+              input.form-control(type="search" placeholder="Search...")
+              button.btn-search.fs-4(type="submit") Search
+          .col-xl-3.col-md-3.col-6.sort
+              h3 Sort
+              select.form-select.fs-4(id="select-list")
+                option.fs-4(value-option="title-increase" selected) A - Z
+                option.fs-4(value-option="title-decrease") Z - A
+                option.fs-4(value-option="rating-increase") Rating Increase
+                option.fs-4(value-option="rating-decrease") Rating Decrease
+                option.fs-4(value-option="price-increase") Price Increase
+                option.fs-4(value-option="price-decrease") Price Decrease
+              button.btn-apply.fs-4(id='btn') Sort
+          .col-xl-3.col-md-3.col-6#category-list.d-flex.align-items-center.mt-5.mb-5
+              h3.fs-4 Category: 
+              select.form-select.fs-4(name="category-list" style="margin: 0 5px 0 10px")
+                each categories in uniqueCategories
+                  option.fs-4(class="category-item" value=categories) #{categories}
+              button.btn.btn-primary.fs-4(id="btn-select-option") Apply
+        .row
+          each product in products
+            - var originalPrice = (product.price / (1 - product.discountPercentage / 100)).toFixed(2)
+            .col-xl-3.col-md-6.col-sm-6.custom-margin
+              .card.card-product
+                a(href=`product/detail/${product.id}`).card-body
+                  span.discount.fs-5.text-white.fw-bold #{product.discountPercentage}%
+                  img(src=`${product.thumbnail}` alt="error")
+                  h2 #{product.title}
+                  .desc
+                    .price.d-flex.align-items-center.gap-3
+                      p.fw-bold.fs-2(style="color: #F77224") $#{product.price}
+                      del.fw-medium.fs-4 $#{originalPrice}
+                    .rating
+                      i(class="fa-solid fa-star fa-sm text-warning")
+                      p.fw-bold #{product.rating}
+                  p.fw-medium.fs-5.d-flex.justify-content-end Stock: #{product.stock}
+                  button.btn_add-to-cart(data-id=product.id class="btn-add") Add To Cart
+        nav(aria-label='Page navigation example' id="nav-pagination")
+          ul.pagination 
+            if(pagination.currentPages > 1) 
+              a.page-link(href='#' pagination=pagination.currentPages - 1 style="color: #018294")
+                i(class="fa-solid fa-chevron-left")
+            - for(let i = 1; i <= pagination.totalPages; i++)
+                li(class=`page-item ${pagination.currentPages != i ? '' : 'active'}`)
+                  a.page-link(href='#' pagination=i) #{i}
+            if(pagination.currentPages < pagination.totalPages) 
+              a.page-link(href='#' pagination=pagination.currentPages + 1 style="color: #018294")
+                i(class="fa-solid fa-chevron-right")
+
+          form(action="" method="POST" data-path="/cart/add-to-cart" id="form-add")

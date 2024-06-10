@@ -1,0 +1,16 @@
+extends ../../layouts/admin.pug
+
+block main
+    .report.mt-4
+        .container
+            h3.text-center.fs-1.fw-bold.pt-5.pb-5#text-report Report & Chat
+            .row
+                each user in users
+                    if user.role !== "admin" && !user.isLocked
+                        .col-6
+                            .chat.mb-4.card.pt-4.pb-4
+                                h6.fw-bold.fs-3= "Name: " + user.firstName + " " + user.lastName
+                                strong.fs-4= "Age: " + user.age
+                                strong.fs-4= "Email: " + user.email
+                                form.d-flex.justify-content-end(action=`/admin/report/chat/${user.id}` style="margin-right: 15px")
+                                    button.btn.btn-primary.fs-4.fw-bold(type="submit" style="min-width: 80px") Chat now

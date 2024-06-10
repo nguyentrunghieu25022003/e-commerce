@@ -1,0 +1,42 @@
+header.header
+  .container.d-flex.align-items-center.justify-content-between
+    .header-left
+      ul.header-list
+        li.header-item
+          a.header-link(href="/") 
+            img.header-logo(src="/imgs/Logo.png" alt="logo")
+        li#header-menu
+          i.fs-1(class="fa-solid fa-bars")
+          nav(id="nav-menu" class="hidden")
+            a.header-link(href="/") 
+              img.pt-2.pb-5.header-logo(src="/imgs/Logo.png" alt="logo")
+            a.fs-3.d-block.pt-2.pb-2.text-dark(href="/product") Product
+            a.fs-3.d-block.pt-2.pb-2.text-dark(href="/help") Help Center
+            a.fs-3.d-block.pt-2.pb-2.text-dark(href="/contact") Contact Us
+            a.fs-3.d-block.pt-2.pb-2.text-dark(href="") Blog
+        li.header-item
+          a.header-link(href="/product") Product
+        li.header-item
+          a.header-link(href="/help") Help Center
+        li.header-item
+          a.header-link(href="/contact") Contact Us
+        li.header-item
+          a.header-link(href="/policy") Policy
+    .header-right
+        if users
+          .cart-box
+            a.header-link(href="/cart")
+              i.fs-1(class="fa-solid fa-cart-shopping")
+              if cart.length >= 99
+                span.cart-quantity.fs-5.fw-bold 99+
+              else
+                span.cart-quantity.fs-5.fw-bold #{cart.length}
+          form(action="/logout" method="POST" id="form-logout")
+            strong #{users}
+            button.btn-logout.btn-link(type="submit") Log Out
+        else
+          .account
+            a.header-link(href="/login") Sign in /
+            a.header-link(href="/register" style="margin-left: -10px;") Sign up
+            button.btn-demo
+              a.btn-link(href="/login") Book a Product

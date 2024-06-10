@@ -1,0 +1,31 @@
+extends ../../layouts/default.pug
+
+block main
+  .form-login
+    .container
+      .row
+        .col-xl-6.col-md-6.col-sm-12.col-12
+          .card
+            .card-body.card-custom
+              h2.login-title.text-center.fs-1.fw-bold.pb-5 SIGN IN
+              form(action="/login" method="POST")
+                .mb-3
+                  label.form-label.fs-3.fw-medium(for="email") Email address:
+                  .login-group
+                    i(class="fa-solid fa-user")
+                    input#exampleInputEmail1.form-control(type="email" name="email" required)
+                  #emailHelp.form-text.text-white We'll never share your email with anyone else.
+                .mb-3
+                  label.form-label.fs-3.fw-medium(for="password") Password:
+                  .login-group
+                    i(class="fa-solid fa-lock")
+                    input#exampleInputPassword1.form-control(type="password" name="password" required)
+                  #emailHelp.form-text.pt-2
+                    a.fw-bold.text-dark.fs-5(href="/forgot-password/email") Forgot password ?
+                button.pt-3.pb-3.mt-3.btn-custom.btn.w-100.fs-3.fw-bold.text-white(type="submit" class="mb-3") Sign in
+        .col-xl-6.col-md-6.col-sm-12.col-12
+          .login-desc.d-flex.flex-column.justify-content-center
+            h2.text-center.text-white Welcome to login
+            p.text-center.text-white Don't have an account ?
+            button
+              a(href="/register") Sign up

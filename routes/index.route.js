@@ -1,0 +1,30 @@
+const homeRouter = require("./home.route");
+const productRouter = require("./product.route");
+const cartRouter = require("./cart.route");
+const productManagementRouter = require("./product-management.route");
+const policyRouter = require("./policy.route");
+const dashboardRouter = require("./dashboard.route");
+const mailRouter = require("./mail.route");
+const decentralizedRouter = require("./decentralization.route");
+const helpRouter = require("./help.route");
+const reportRouter = require("./report.route");
+const roleCheck = require("../middlewares/roles");
+const contactRouter = require("./contact.route");
+const passwordRouter = require("./password.route");
+const orderRouter = require("./order.route");
+
+module.exports = async (app) => {
+  app.use("/", homeRouter);
+  app.use("/product", productRouter);
+  app.use("/cart", cartRouter);
+  app.use("/contact", contactRouter);
+  app.use("/policy", policyRouter);
+  app.use("/forgot-password", passwordRouter);
+  app.use("/admin/dashboard", dashboardRouter);
+  app.use("/admin/product", roleCheck("admin"), productManagementRouter);
+  app.use("/admin/decentralization", decentralizedRouter);
+  app.use("/admin/mail-management", roleCheck("admin"), mailRouter);
+  app.use("/admin/order-management", orderRouter);
+  app.use("/admin/help", helpRouter);
+  app.use("/admin/report", reportRouter);
+};

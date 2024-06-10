@@ -1,0 +1,46 @@
+extends ../../layouts/admin.pug
+
+block main
+  .container.mt-4
+    .row
+      .col-md-8.offset-md-2
+        .card
+          .card-body
+            h1.card-title.text-center.fw-bold.fs-1 Edit Product
+            form(action=`/admin/product/edit/${product.id}` method="POST" enctype="multipart/form-data" id="form-edit-product")
+              .mb-3
+                label.fw-bold.pb-2(for="title") Product Title
+                input#title.form-control(type="text" name="title" required value=product.title)
+              .mb-3
+                label.fw-bold.pb-2(for="description") Description
+                textarea#description.form-control(name="description" rows="3" required)= product.description
+              .mb-3
+                label.fw-bold.pb-2(for="price") Price ($)
+                input#price.form-control(type="number" step="any" name="price" required value=product.price)
+              .mb-3
+                label.fw-bold.pb-2(for="discountPercentage") Discount Percentage (%)
+                input#discountPercentage.form-control(type="number" step="any" name="discountPercentage" min="0" max="100" value=product.discountPercentage)
+              .mb-3
+                label.fw-bold.pb-2(for="rating") Rating
+                input#rating.form-control(type="number" step="any" name="rating" min="0" max="5" value=product.rating)
+              .mb-3
+                label.fw-bold.pb-2(for="stock") Stock
+                input#stock.form-control(type="number" name="stock" min="0" value=product.stock)
+              .mb-3
+                label.fw-bold.pb-2(for="brand") Brand
+                input#brand.form-control(type="text" name="brand" required value=product.brand)
+              .mb-3
+                label.fw-bold.pb-2(for="category") Category
+                select#category.form-select(name="category" required style="font-size: 1.6rem; padding: 5px 0 0 10px;")
+                  each item in category
+                    option.fs-4(value=item selected=(item === product.category)) #{item}
+              .mb-3
+                label.fw-bold.pb-2(for="thumbnail") Thumbnail URL
+                input#thumbnail.form-control(type="url" name="thumbnail" required value=product.thumbnail)
+              .mb-3
+                label.fw-bold.pb-2(for="images") Product Images
+                input.images.form-control(type="file" name="images" multiple)
+                .imagePreview
+              .d-grid.gap-2
+                button.btn.btn-warning.fs-4.fw-bold.text-white.mt-5(type="submit" id="btn-edit-product" data-id=product.id) Edit Product
+                a.btn.btn-secondary.fw-bold.fs-4.mt-3(href="/admin/product") Cancel

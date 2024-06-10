@@ -1,0 +1,33 @@
+extends ../../layouts/admin.pug
+
+block main
+    .order.mt-4
+        .container
+            .row
+                .col-12
+                    h2.text-center.fs-1.fw-bold.pt-3.pb-5 Order Management
+            .row
+                .col-3
+                    a.fs-4.fw-bold(href="/admin/order-management/processing")
+                        span.text-dark
+                            i(class="fa-solid fa-box")
+                            strong Processing
+                        strong.d-block #{processCount}
+                .col-3
+                    a.fs-4.fw-bold(href="/admin/order-management/shipped")
+                        span.text-dark
+                            i(class="fa-solid fa-truck")
+                            strong Shipping to the buyer
+                        strong.d-block #{shippedCount}
+                .col-3
+                    a.fs-4.fw-bold(href="/admin/order-management/delivered")
+                        span.text-dark
+                            i(class="fa-solid fa-clipboard")
+                            strong Delivered
+                        strong.d-block #{deliveredCount}
+                .col-3
+                    a.fs-4.fw-bold(href="/admin/order-management/cancelled")
+                        span.text-dark
+                            i(class="fa-solid fa-xmark")
+                            strong Cancelled
+                        strong.d-block #{cancelledCount}

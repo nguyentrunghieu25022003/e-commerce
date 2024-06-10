@@ -1,0 +1,24 @@
+extends ../../layouts/default.pug
+
+block main
+    .my-cancelled.pt-5.pb-5
+        .container
+            .row
+                .col-12
+                    h3.fs-1.fw-bold.pb-5 Cancelled
+                    if orders.length === 0
+                        strong.fs-2.fw-medium No orders have been cancelled
+                    each order in orders
+                        .order-container.card
+                            - var count = 1;
+                            each product in order.orderItems
+                                .order-card.d-flex.justify-content-around
+                                    strong.fs-4.fw-bold= count + "."
+                                    img(src=product.thumbnail alt=product.name class="cart-img")
+                                    h6.fs-4.fw-bold= product.name
+                                    p.fs-5 Price: $#{product.price}
+                                    p.fs-5 Quantity: #{product.quantity}
+                                    p.fs-5 Total price for this product: $#{product.total}
+                                - count++;
+                            .order-desc
+                                strong.fs-3.fw-bold Total: $#{order.totalPrice}

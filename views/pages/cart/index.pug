@@ -1,0 +1,46 @@
+extends ../../layouts/default.pug
+
+block main
+    .cart
+        .container
+            h2.cart-heading.pb-5 My shopping cart
+            .row
+                .col-xl-8.col-md-8.col-12
+                    .product-list.pt-5.pb-5.card
+                        if cart.length > 0
+                            form(action="/cart/delete-products" method="POST" id="form-delete-products")
+                                each product in cart
+                                    .product-cart
+                                        input.fs-3.form-check-input.cart-checked(type="checkbox" name="checkedProducts" change-status value=product._id quantity=product.quantity price-product=product.price)
+                                        img(src=`${product.thumbnail}` alt="error" class="cart-img")
+                                        h2.cart-title #{product.title}
+                                        .quantity
+                                            button.fs-4.btn.btn-light(class="btn-up" type="submit" data-id=product._id data-value="up") +
+                                            input.fs-4(type="number" id="quantity-input" value=product.quantity min="1")
+                                            button.fs-4.btn.btn-light(class="btn-down" type="submit" data-id=product._id data-value="down") -
+                                        strong.price.fs-4 $#{product.price}
+                                        button.btn.btn-danger.fs-4(button-delete data-id=product._id) Remove
+                                button.btn.btn-danger.fs-4(id="btn-delete" type="submit") Remove all
+                            .check-all
+                                button.btn.fs-4.btn-check-cart(check-all) Checked all
+                        else
+                            strong.cart-status There are no products in the cart
+                .col-xl-4.col-md-4.col-12.pl-5
+                    #total
+                        p.fs-2 Cart order total
+                        #price-box.d-flex
+                            strong.fs-3 $
+                            p.fs-2#total-price 0 
+                    .pay
+                        p.fs-2.pt-3 Congrats! You get Free Shipping.
+                        p.fs-2.pb-5 Excludes furniture, mattresses & other exclusions apply.
+                        .btn-group 
+                            button(id="btn-view-cart") View Cart
+                            form.w-100(action="" data-path="/cart/pay-now" method="POST" id="form-pay-products")
+                                input(type="hidden", name="userId" value=user)
+                                input(type="hidden" name="productList" id="input-product-list")
+                                button(type="submit") Pay Now
+
+            form(action="" method="POST" data-path="/cart/delete" id="form-delete")
+            form(action="" method="POST" data-path="/cart/increase" id="form-increase")
+            form(action="" method="POST" data-path="/cart/decrease" id="form-decrease")

@@ -1,0 +1,43 @@
+extends ../../layouts/admin.pug
+
+block main
+  .product-management.pt-5
+    .container
+      .row
+        h2.text-dark.fs-1.text-center.fw-bold Products
+        p.text-dark.fs-3.fw-medium There are a total of #{countProduct} products
+        .button-add
+          button.btn.btn-primary.d-flex.align-items-center.justify-content-center.mt-3.mb-3
+            a.d-flex.align-items-center(href="/admin/product/create" style="gap: 10px")
+              i.text-white.fs-4.fw-bold(class="fa-solid fa-plus")
+              span.text-white.fs-4.fw-bold Add New Product
+      .row
+        each product in products
+          .col-3.mt-4
+            .product-item
+                img(src=`${product.thumbnail}` alt="error" style="width: 100%; height: 120px")
+                h4.fs-3.fw-bold.pt-2(style="padding-left: 18px") #{product.title}
+                .desc.d-flex.align-items-center.justify-content-around.pt-3.pb-5
+                  p.text-dark.fw-medium.fs-4 Price: $#{product.price}
+                  p.text-dark.fw-medium.fs-4 Rating: 
+                    i(class="fa-solid fa-star fa-sm text-warning")
+                    span #{product.rating}         
+                .btn-admin-group.d-flex.align-items-center.justify-content-around.gap-3
+                  button.w-50.btn.btn-danger.fs-4.fw-bold(type="submit" class="btn-admin-delete" data-id=product.id) Delete
+                  button.w-50.btn.btn-warning.fs-4.fw-bold(class="btn-admin-edit")
+                    a.text-white(href=`/admin/product/edit/${product.id}`) Edit
+      .row.pt-5 
+        nav(aria-label='Page navigation example' id="nav-pagination")
+          ul.pagination 
+            if(pagination.currentPages > 1) 
+              a.page-link(href='#' pagination=pagination.currentPages - 1)
+                i(class="fa-solid fa-chevron-left")
+            - for(let i = 1; i <= pagination.totalPages; i++)
+                li(class=`page-item ${pagination.currentPages != i ? '' : 'active'}`)
+                  a.page-link(href='#' pagination=i) #{i}
+            if(pagination.currentPages < pagination.totalPages) 
+              a.page-link(href='#' pagination=pagination.currentPages + 1)
+                i(class="fa-solid fa-chevron-right")
+        
+      form(action="" method="POST" data-path="/admin/product/delete" id="form-admin-delete")
+      form(action="" method="POST" data-path="/admin/product/edit" id="form-admin-edit")

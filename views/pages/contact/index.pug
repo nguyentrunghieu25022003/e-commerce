@@ -1,0 +1,36 @@
+extends ../../layouts/default.pug
+
+block main
+    .contact
+        .container
+            h3.text-center Contact With Us
+            p.text-center.fs-3 The right move at the right time saves your investment. live the dream of expanding your business.
+            form(action="/contact" method="POST" id="form-contact")
+                .row.mt-5
+                    .col-xl-6.col-md-6.col-12
+                        input.form-control.form-control-lg(type='text' name="firstName" placeholder='First name' aria-label='.form-control-lg example'  required)
+                    .col-xl-6.col-md-6.col-12
+                        input.form-control.form-control-lg(type='text' id="lastName" name="lastName" placeholder='Last name' aria-label='.form-control-lg example' required)
+                .row.mt-4
+                    .col-xl-6.col-md-6.col-12
+                        input.form-control.form-control-lg(type='text' name="email" placeholder='Your email' aria-label='.form-control-lg example' required)
+                    .col-xl-6.col-md-6.col-12
+                        input.form-control.form-control-lg(type='text' id="phoneNumber" name="phoneNumber" placeholder='Phone number' aria-label='.form-control-lg example' required)
+                .row.mt-4
+                    .col-xl-12.col-md-12.col-12.mb-3
+                        textarea#exampleFormControlTextarea1.form-control(placeholder='Tell us about that' name="message" rows='5' required)
+                button.btn-contact(type="submit") Contact us
+            .row.mt-5
+                strong.text-center.fs-1.fw-bold.pt-5.pb-5 ... or chat online, we will support you fully
+                .col-xl-6.col-md-6.col-12
+                    #chat-container
+                        #chat-box
+                            #chat-header
+                                h6.fs-3.fw-bold.text-white Administrator
+                            ul#messages
+                        form.form-user#form-message.w-100(action="javascript:void(0);")
+                            input.form-control#chat-input(placeholder='Type your message here...' required)
+                            button.btn#send-button.fs-4.fw-bold.text-white(type="submit" value-id=userIds style="background: #004D60")
+                                i(class="fa-solid fa-paper-plane")
+                .col-xl-6.col-md-6.col-12
+                    img.w-100(src="/imgs/Guides_The-ultimate-guide-to-administrative-tasks.png" alt="error")

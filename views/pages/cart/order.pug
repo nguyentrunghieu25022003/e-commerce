@@ -1,0 +1,33 @@
+extends ../../layouts/default.pug
+
+block main
+    .my-order
+        .container
+            .row
+                .col-12
+                    h3.fs-1.fw-bold.text-center.pb-5 My Order
+            .row.pt-5
+                .col-xl-3.col-md-3.col-sm-6.col-6.mt-3
+                    a.fs-4.fw-bold(href="/cart/view-cart/processing")
+                        span.text-dark
+                            i(class="fa-solid fa-box")
+                            strong Processing
+                        strong.d-block #{processCount}
+                .col-xl-3.col-md-3.col-sm-6.col-6.mt-3
+                    a.fs-4.fw-bold(href="/cart/view-cart/shipped")
+                        span.text-dark
+                            i(class="fa-solid fa-truck")
+                            strong Shipping
+                        strong.d-block #{shippedCount}
+                .col-xl-3.col-md-3.col-sm-6.col-6.mt-3
+                    a.fs-4.fw-bold(href="/cart/view-cart/delivered")
+                        span.text-dark
+                            i(class="fa-solid fa-clipboard")
+                            strong Delivered
+                        strong.d-block #{deliveredCount}
+                .col-xl-3.col-md-3.col-sm-6.col-6.mt-3
+                    a.fs-4.fw-bold(href="/cart/view-cart/cancelled")
+                        span.text-dark
+                            i(class="fa-solid fa-xmark")
+                            strong Cancelled
+                        strong.d-block #{cancelledCount}

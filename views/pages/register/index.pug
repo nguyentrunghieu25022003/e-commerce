@@ -1,0 +1,51 @@
+extends ../../layouts/default.pug
+
+block main
+    .form-register
+        .container.mt-5.mb-5
+            .row.card.card-custom-register(style="margin: 0 auto")
+                .card-body.card-body-custom
+                    h2.login-title.text-center.fs-1.fw-bold.pb-5 SIGN UP
+                    form(action="/register" method="POST" id="form-register")
+                        .formGroup.d-flex.justify-content-between
+                            .col-xl-6.col-md-6.col-sm-6.col-6
+                                label.form-label.fs-3.fw-medium(for="firstName") First Name:
+                                input.form-control(type="text" id="firstName" name="firstName" required)
+                            .col-xl-6.col-md-6.col-sm-6.col-6
+                                label.form-label.fs-3.fw-medium(for="lastName") Last Name:
+                                input.form-control(type="text" id="lastNameRegister" name="lastName" required)
+                        .formGroup.d-flex.justify-content-between.mt-3
+                            .col-xl-6.col-md-6.col-sm-6.col-6
+                                label.form-label.fs-3.fw-medium(for="age") Age:
+                                input.form-control(type="number" id="age" name="age")   
+                            .col-xl-6.col-md-6.col-sm-6.col-6
+                                label.form-label.fs-3.fw-medium(for="gender") Gender:
+                                select.form-control(id="gender" name="gender")
+                                    option(value="male") Male
+                                    option(value="female") Female
+                                    option(value="other") Other
+                        .form-group
+                            label.form-label.fs-3.fw-medium(for="address") Address: 
+                            input.form-control(type="text" id="address" name="address" required)
+                        .form-group
+                            label.form-label.fs-3.fw-medium.w-100(for="email") Email:
+                            input.form-control(type="email" id="email" name="email" required)
+                        .formGroup.d-flex.justify-content-between   
+                            .col-6
+                                label.form-label.fs-3.fw-medium(for="phone") Phone:
+                                input.form-control(type="tel" id="phone" name="phone")
+                            .col-6
+                                label.form-label.fs-3.fw-medium(for="birthDate") Birth Date:
+                                input.form-control.fs-4(type="date" id="birthDate" name="birthDate")    
+                        .form-group
+                            label.form-label.fs-3.fw-medium(for="username") Username:
+                            input.form-control(type="text" id="username" name="username" required)    
+                        .form-group
+                            label.form-label.fs-3.fw-medium(for="password") Password:
+                            input.form-control(type="password" id="password" name="password" required)
+                        .formGroup.d-flex.align-items-center.gap-3
+                            input.form-check-input.fs-3(type="checkbox" required)
+                            strong.fs-4.fw-bold.mt-2 I accept the Terms of Use & Privacy Policy
+                        button.btn.w-100.fs-3.fw-bold.d-flex.justify-content-center.align-items-center.gap-3(type="submit") 
+                            span Submit
+                            i(class="fa-solid fa-paper-plane")

@@ -1,0 +1,68 @@
+extends ../../layouts/default.pug
+
+block main
+    .product
+        .container
+            .row.pb-5
+                .col-xl-4.col-md-4.col-12
+                    a(href="/product" class="back-link") 
+                        i(class="fa-solid fa-chevron-left")
+                        span Back
+                    .carousel
+                        .carousel-viewer
+                            img(src=`${product.thumbnail}` alt="error" class="thumbnail-img active")
+                            if product.images.length > 1 
+                                each img in product.images
+                                    img(src=img alt="error" class="thumbnail-img")
+                                .carousel-controls
+                                    button.btn.carousel-prev
+                                        i(class="fa-solid fa-chevron-left" style="color:#999")
+                                    button.btn.carousel-next
+                                        i(class="fa-solid fa-chevron-right" style="color:#999")
+                            else
+                                img(src=img alt="error" class="thumbnail-img")
+                .col-xl-8.col-md-8.col-12
+                    .detail
+                        h4 #{product.title}
+                        strong $ #{product.price}
+                        strong.d-block.pt-2 #{product.brand}
+                        .rating-detail
+                            i(class="fa-solid fa-star fa-sm text-warning")
+                            p #{product.rating}
+                            strong.pt-1= "(" + countComments + " Reviews)"
+                        p #{product.description} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium atque, blanditiis possimus consequatur repellendus itaque repellat quisquam quod adipisci iste cupiditate voluptas sequi perferendis iusto rem nihil ea earum porro!
+                        .quantity.d-flex.align-items-center(style="gap: 10px")
+                            label.form-label.form-text.fs-4(for="inputQuantity") Enter the quantity of the product you need to buy
+                            input.form-control(type="number" id="quantity-detail" name="inputQuantity" value="1" min="1")
+                        button.d-flex.align-items-center.justify-content-center(data-id=product.id class="btn-add-to-cart" style="gap: 10px")
+                            i.fs-2(class="fa-solid fa-cart-plus")
+                            span Add to cart
+                        p Free shipping on order 50 USD
+            .row.pt-5
+                .col-12
+                    ul#myTab.nav.nav-tabs(role='tablist')
+                        li.nav-item(role='presentation')
+                            button.fs-2.fw-medium#home-tab.nav-link.active(data-bs-toggle='tab' data-bs-target='#home-tab-pane' type='button' role='tab' aria-controls='home-tab-pane' aria-selected='true') Description
+                        li.nav-item(role='presentation')
+                            button.fs-2.fw-medium#profile-tab.nav-link(data-bs-toggle='tab' data-bs-target='#profile-tab-pane' type='button' role='tab' aria-controls='profile-tab-pane' aria-selected='false') Reviews
+                    #myTabContent.tab-content
+                    #home-tab-pane.pt-4.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='home-tab' tabindex='0')
+                        p.lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eum officiis labore soluta numquam provident adipisci repellendus vitae placeat asperiores odio, porro quis explicabo, ut fuga itaque autem nesciunt error! Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus omnis fugit corporis perspiciatis dolorem ea? Debitis recusandae odit consequatur esse maiores unde temporibus possimus fugit, rerum aspernatur molestiae, corrupti atque! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error vitae doloribus blanditiis tempore dolor magnam porro repudiandae nostrum autem odio. Debitis quam obcaecati et totam minima. Officia blanditiis molestias libero! Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, aut eaque! Numquam dolores sint aut eum ad veritatis quaerat similique assumenda facilis tempore? Quisquam, eveniet laudantium architecto unde voluptatem iste.
+                    #profile-tab-pane.pt-4.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab' tabindex='0')
+                        form(action=`${product.id}/comment/create` method="POST").mb-3
+                            label.form-label.form-text.fs-4.fw-medium(for='exampleFormControlTextarea1') #{users}
+                            textarea#exampleFormControlTextarea1.form-control(name="text" rows='3' required)
+                            button.btn.btn-primary.mt-3.mb-3.fs-4(type="submit") Comment
+                        each comment in comments
+                            .comment
+                                input(type="hidden" name="_method" value="DELETE")
+                                .text
+                                    .strong.pb-2.pt-5.fs-4.fw-medium #{comment.user.email}
+                                    .strong.fs-5.pb-4 #{comment.createdAt}
+                                textarea.form-control(name="text" rows='3' disabled) #{comment.text}
+                            if users && (users === comment.user.email)
+                                form(action=`${product.id}/comment/delete/${comment.id}?_method=DELETE` method="POST")
+                                    input(type="hidden" name="_method" value="DELETE")
+                                    button.btn.btn-danger.mt-3.fs-4(type="submit" class="delete-comment") Remove
+                                    
+            form(action="" method="POST" data-path=`/product/detail/${product.id}/add-to-cart` id="form-add-product")

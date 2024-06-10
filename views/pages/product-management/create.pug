@@ -1,0 +1,46 @@
+extends ../../layouts/admin.pug
+
+block main
+  .container.mt-4
+    .row
+      .col-md-8.offset-md-2
+        .card
+          .card-body
+            h2.card-title.fw-bold.fs-1.fw-bold.text-center Create new product
+            form(method="POST" action="/admin/product/create" enctype="multipart/form-data")
+              .mb-3
+                label.fw-bold.pb-2(for="title") Product Title
+                input#title.form-control(type="text" name="title" required)
+              .mb-3
+                label.fw-bold.pb-2(for="description") Description
+                textarea#description.form-control(name="description" rows="3" required)
+              .mb-3
+                label.fw-bold.pb-2(for="price") Price ($)
+                input#price.form-control(type="number" step="any" name="price" required)
+              .mb-3
+                label.fw-bold.pb-2(for="discountPercentage") Discount Percentage (%)
+                input#discountPercentage.form-control(type="number" step="any" name="discountPercentage" min="0" max="100")
+              .mb-3
+                label.fw-bold.pb-2(for="rating") Rating
+                input#rating.form-control(type="number" step="any" name="rating" min="0" max="5")
+              .mb-3
+                label.fw-bold.pb-2(for="stock") Stock
+                input#stock.form-control(type="number" name="stock" min="0")
+              .mb-3
+                label.fw-bold.pb-2(for="brand") Brand
+                input#brand.form-control(type="text" name="brand" required)
+              .mb-3
+                label.fw-bold.pb-2(for="category") Category
+                select#category.form-select(name="category" required style="font-size: 1.6rem; padding: 5px 0 0 10px;")
+                  each categories in uniqueCategories
+                    option.fs-4(class="category-item" value=categories) #{categories}
+              .mb-3
+                label.fw-bold.pb-2(for="thumbnail") Thumbnail URL
+                input#thumbnail.form-control(type="url" name="thumbnail" required)
+              .mb-3
+                label.fw-bold.pb-2(for="images") Product Images
+                input.images.form-control(type="file" name="images" multiple)
+                .imagePreview
+              .d-grid.gap-2
+                button.btn.btn-primary.fs-4.fw-bold.mt-5(type="submit") Create Product
+                a.btn.btn-secondary.fw-bold.fs-4.mt-3(href="/admin/product") Cancel

@@ -1,0 +1,17 @@
+extends ../../layouts/default.pug
+
+block main
+    .forgot-password
+        .container
+            .row
+                .col-12
+                    h2.fs-1.fw-bold.text-center.pb-2 Forgot Password ?
+                    p.fs-4.text-center.pt-3.pb-5 No worries, we'll send you reset instructions.
+                    form.pt-5(action="/forgot-password/send-email" method="POST")
+                        label.form-label.fs-4.fw-medium(for="email") Email address:
+                        input.mb-3.form-control(type="email" name="email" placeholder="Enter your email address..." required)
+                        button.btn.btn-primary.fs-4.fw-bold(type="submit") Reset Password
+                    .back.pt-5
+                        a.fs-4.text-dark(href="/login")
+                            i(class="fa-solid fa-arrow-left")
+                            strong Back to log in

@@ -1,0 +1,18 @@
+extends ../../layouts/admin.pug
+
+block main
+    .chat-with-user
+        .container
+            .row
+                .col-12
+                    #chat-container
+                        #chat-admin
+                            #header_chat-box
+                                h5.fw-bold.fs-3.text-white #{user.email}
+                                a.pr-4(href="/admin/report")
+                                    i.fw-bold.fs-3.text-white(class="fa-solid fa-rotate-left")
+                            ul#messages
+                        form.d-flex#form-message(action="javascript:void(0);")
+                            input#chat-input.form-control(autocomplete="off", placeholder='Type your message here...')
+                            button#send-button.btn.btn-primary.fs-4.fw-bold(type="submit" value-id=user.id)
+                                i(class="fa-solid fa-paper-plane")

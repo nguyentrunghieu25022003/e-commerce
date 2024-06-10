@@ -1,0 +1,439 @@
+@media (max-width: 1400px) {
+    .card-custom-register {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .card-custom-register {
+        width: 50%;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-item, .header-right #form-logout strong {
+        display: none;
+    }
+
+    .btn-logout {
+        max-width: 90px;
+    }
+
+    #header-menu {
+        display: block;
+        position: relative;
+    }
+
+    .hidden {
+        display: none;
+    }
+    
+    .nav-visible {
+        display: block;
+    }
+
+    #nav-menu {
+        position: absolute;
+        z-index: 999;
+        background: var(--white-color);
+        padding: 30px;
+    }
+
+    .header-logo {
+        padding-right: 0;
+    }
+
+    .content img {
+        margin-top: 90px;
+        width: 100%;
+    }
+
+    .content h1 {
+        font-size: 5rem;
+    }
+    
+    .content p {
+        font-size: 1.4rem;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .service-list {
+        display: flex;
+    }
+
+    .button-group button {
+        min-width: 145px;
+        height: 48px;
+    }
+
+    .button-group button a {
+        font-size: 1.2rem;
+    }
+    
+    .button-group button:last-child {
+        margin-left: 0;
+    }
+
+    .footer-bottom .banner img {
+        width: 100%;
+    }
+
+    .footer-nav .footer-list {
+        display: none;
+    }
+
+    .footer-top h2 {
+        font-size: 3rem;
+    }
+
+    .footer-top p {
+        font-size: 1.5rem;
+    }
+
+    .frame-list img {
+       width: 100%;
+    }
+
+    .cart-heading {
+        font-size: 2rem;
+    }
+
+    .cart-status, .cart .btn-group button {
+        font-size: 1.5rem;
+    }
+
+    #total {
+        padding-top: 10px;
+    }
+
+    .product-title {
+        font-size: 2.5rem;
+    }
+
+    .cart-img {
+        width: 120px;
+        height: 60px;
+    }
+
+    .product-cart > button {
+        display: none;
+    }
+
+    .cart-title {
+        width: 100px;
+    }
+
+
+    .quantity input {
+        width: 30px;
+    }
+
+    .product-cart {
+        gap: 15px;
+    }
+
+    .contact img {
+        margin-top: 20px;
+    }
+    
+    .row-custom {
+        display: flex;
+        align-items: center;
+    }
+
+    .card-custom-register {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-item, .header-right #form-logout strong {
+        display: none;
+    }
+
+    .btn-logout {
+        max-width: 90px;
+    }
+
+    #header-menu {
+        display: block;
+        position: relative;
+    }
+
+    .hidden {
+        display: none;
+    }
+    
+    .nav-visible {
+        display: block;
+    }
+
+    #nav-menu {
+        position: absolute;
+        z-index: 999;
+        background: var(--white-color);
+        padding: 30px;
+    }
+
+    .header-logo {
+        padding-right: 0;
+    }
+
+    .content img {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .content h1 {
+        font-size: 4rem;
+        text-align: center;
+    }
+    
+    .content p {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .service-list img {
+        width: 100%;
+    }
+
+    .button-group button {
+        min-width: 145px;
+        height: 48px;
+    }
+
+    .button-group button a {
+        font-size: 1.2rem;
+    }
+    
+    .button-group button:last-child {
+        margin-left: 0;
+    }
+
+    .footer-bottom .banner img {
+        width: 100%;
+    }
+
+    .footer-nav .footer-list {
+        display: none;
+    }
+
+    .footer-top h2 {
+        font-size: 2.5rem;
+    }
+
+    .footer-top p {
+        font-size: 1.3rem;
+    }
+
+    .frame-list img {
+       width: 100%;
+    }
+
+    .cart-heading {
+        font-size: 2rem;
+    }
+
+    .cart-status, .cart .btn-group button {
+        font-size: 1.5rem;
+    }
+
+    #total {
+        padding-top: 10px;
+    }
+
+    .product-title {
+        font-size: 2.5rem;
+    }
+
+    .cart-img {
+        width: 120px;
+        height: 60px;
+    }
+
+    .product-cart > button {
+        display: none;
+    }
+
+    .cart-title {
+        width: 100px;
+    }
+
+
+    .quantity input {
+        width: 30px;
+    }
+
+    .product-cart {
+        gap: 15px;
+    }
+
+    .contact img {
+        margin-top: 20px;
+    }
+
+    #phoneNumber, #lastName {
+        margin-top: 15px;
+    }
+
+    .card-custom-register {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-desc {
+        margin-top: 20px;
+    }
+
+    .header-item, .header-right #form-logout strong {
+        display: none;
+    }
+
+    .btn-logout {
+        max-width: 90px;
+    }
+
+    #header-menu {
+        display: block;
+        position: relative;
+    }
+
+    .hidden {
+        display: none;
+    }
+    
+    .nav-visible {
+        display: block;
+    }
+
+    #nav-menu {
+        position: absolute;
+        z-index: 999;
+        background: var(--white-color);
+        padding: 30px;
+    }
+
+    .header-logo {
+        padding-right: 0;
+    }
+
+    .content img {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .content h1 {
+        font-size: 4rem;
+        text-align: center;
+    }
+    
+    .content p {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .service-list img {
+        width: 100%;
+    }
+
+    .button-group button {
+        min-width: 145px;
+        height: 48px;
+    }
+
+    .button-group button a {
+        font-size: 1.2rem;
+    }
+    
+    .button-group button:last-child {
+        margin-left: 0;
+    }
+
+    .footer-bottom .banner img {
+        width: 100%;
+    }
+
+    .footer-nav .footer-list {
+        display: none;
+    }
+
+    .footer-top h2 {
+        font-size: 2.5rem;
+    }
+
+    .footer-top p {
+        font-size: 1.3rem;
+    }
+
+    .frame-list img {
+       width: 100%;
+    }
+
+    .cart-heading {
+        font-size: 2rem;
+    }
+
+    .cart-status, .cart .btn-group button {
+        font-size: 1.5rem;
+    }
+
+    #total {
+        padding-top: 10px;
+    }
+
+    .product-title {
+        font-size: 2.5rem;
+    }
+
+    .cart-img {
+        width: 120px;
+        height: 60px;
+    }
+
+    .product-cart h2, .product-cart > button {
+        display: none;
+    }
+
+
+    .quantity input {
+        width: 30px;
+    }
+
+    .product-cart {
+        gap: 15px;
+    }
+
+    .contact img {
+        margin-top: 20px;
+    }
+
+    #phoneNumber, #lastName {
+        margin-top: 15px;
+    }
+
+    .card-custom-register {
+        width: 100%;
+    }
+}

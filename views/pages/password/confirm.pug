@@ -1,0 +1,12 @@
+extends ../../layouts/default.pug
+
+block main
+    .forgot-password
+        .container
+            .row
+                .col-12
+                    h2.fs-1.fw-bold.text-center.pb-2 Confirm Email
+                    p.fs-4.text-center.pt-3.pb-5 Please enter the confirmation code you received from our email. Confirmation code consists of 4 digits
+                    form.form-confirm(action="/forgot-password/code-confirm" method="POST")
+                        input.form-control(name="code" type="text" required)
+                        button.fs-4.fw-bold.btn.btn-primary(type="submit") Confirm

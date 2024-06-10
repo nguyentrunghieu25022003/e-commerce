@@ -1,0 +1,51 @@
+extends ../../layouts/admin.pug
+
+block main
+    .people.mt-4
+       .container
+          .row
+            .col-12
+              h3.fs-1.text-center.pt-3.fw-bold Accounts
+              .account-button.mb-5.mt-5.d-flex(style="gap: 10px")
+                form(action="" data-path="/admin/mail-management/lock-all?_method=PATCH" method="POST" id="form-lock-all")
+                  input(type="hidden" name="lockAll" value="")
+                  button.btn.btn-danger.fs-4.fw-bold(lock type="submit" style="min-width: 80px") Lock all
+                form(action="" data-path="/admin/mail-management/unlock-all?_method=PATCH" method="POST" id="form-unlock-all")
+                  input(type="hidden" name="unlockAll" value="")
+                  button.btn.btn-warning.fs-4.fw-bold.text-white(unlock type="submit" style="min-width: 80px") Unlock all
+                .check-all-account
+                  input.form-check-input.mb-2.fs-5(type="checkbox" name="checkAll" checkAll)
+                  label.form-label.fs-4.pt-2.fw-bold(for="checkAll" style="min-width: 80px") Checked all
+              table.table.text-center
+                thead
+                  tr.fs-4.fw-bold
+                    td.text-white(style="background: #004D60;" scope="col") #
+                    td.text-white(style="background: #004D60;" scope="col") Email
+                    td.text-white(style="background: #004D60;" scope="col") Status
+                    td.text-white(style="background: #004D60;" scope="col") Name
+                    td.text-white(style="background: #004D60;" scope="col") Actions
+                tbody
+                  each user in users
+                    tr.fs-4                  
+                      th(scope="row").d-flex.align-items-center.justify-content-center.gap-3 
+                        input.mb-2.form-check-input.user-checked(type="checkbox" value=user.email isChecked)
+                      td #{user.email}
+                      td
+                        if user.isLocked 
+                          span.text-danger.fw-bold Lock
+                        else 
+                          span.text-success.fw-bold Unlock
+                      td #{user.firstName} #{user.lastName}
+                      td.d-flex.justify-content-center(style="gap: 10px")
+                        button.fs-4.fw-bold(data-id=user.id type="submit" class="btn-lock btn btn-danger" style="min-width: 80px") Lock
+                        button.fs-4.fw-bold.text-white(data-id=user.id type="submit" class="btn-unlock btn btn-warning" style="min-width: 80px") Unlock
+              .email-management
+                h3.fs-1.text-center.pt-5.pb-5.fw-bold Email
+                form(action="/admin/mail-management/send-email" method="POST" style="padding-bottom: 30px")
+                  label.form-label.fs-4.fw-bold(for="exampleFormControlInput1") Email address:
+                  input.form-control.email-address#exampleFormControlInput1(type="text" name="email" placeholder="Recipient's email" required)
+                  label.form-label.fs-4.pt-3.fw-bold(for="exampleFormControlTextarea1") Message:
+                  textarea.form-control#exampleFormControlTextarea1(name="message" placeholder="Your message" row="3" required)
+                  button.btn.btn-primary.btn-lg.fs-4.mt-5.fw-bold(type="submit" style="min-width: 80px") Send
+
+              form(action="" data-path="/admin/mail-management" method="POST" id="form-mail-management")
