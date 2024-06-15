@@ -1,2 +1,21 @@
-/node_modules/
+# Thư mục node_modules chứa các package đã cài đặt qua npm
+node_modules/
+
+# Thư mục uploads có thể chứa các file được tải lên bởi người dùng
+uploads/
+
+# File .env chứa các biến môi trường quan trọng và nhạy cảm
 .env
+
+# Các file liên quan đến config của IDE như VSCode
+.vscode/
+
+# Thư mục temp hoặc cache có thể được tạo bởi các công cụ hoặc editor
+*.log
+*.cache
+tmp/
+
+# Đảm bảo các file log và databases không được theo dõi
+*.log
+*.sql
+*.db
