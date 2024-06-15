@@ -9,6 +9,7 @@ const flash = require("express-flash");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const sharedSession = require("express-socket.io-session");
+const path = require("path");
 require("dotenv").config();
 const app = express();
 const port = 3000;
@@ -21,7 +22,7 @@ if (!process.env.SESSION_SECRET) {
 
 app.use(express.static("public"));
 app.use(morgan("combined"));
-app.set("views", "./views");
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({ extended: true }));
