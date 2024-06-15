@@ -20,10 +20,10 @@ if (!process.env.SESSION_SECRET) {
   console.log("SESSION_SECRET is not set!");
 }
 
-app.use(express.static("public"));
-app.use(morgan("combined"));
+app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+app.use(morgan("combined"));
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
